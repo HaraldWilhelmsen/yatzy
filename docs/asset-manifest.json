@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/yatzy/static/css/main.e6c13ad2.css",
-    "main.js": "/yatzy/static/js/main.559ff017.js",
+    "main.js": "/yatzy/static/js/main.1688eb54.js",
+    "static/media/wood-pattern.png": "/yatzy/static/media/wood-pattern.7723af6206c4fed53548.png",
     "index.html": "/yatzy/index.html",
     "main.e6c13ad2.css.map": "/yatzy/static/css/main.e6c13ad2.css.map",
-    "main.559ff017.js.map": "/yatzy/static/js/main.559ff017.js.map"
+    "main.1688eb54.js.map": "/yatzy/static/js/main.1688eb54.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.559ff017.js"
+    "static/js/main.1688eb54.js"
   ]
 }

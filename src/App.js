@@ -1,8 +1,28 @@
 import { useState } from 'react';
-import Dice from './dice';
+
+import Board from "./Board";
+import Dice from './Dice';
 
 function App() {
-  const [numbers, setNumbers]=useState([1, 2, 3 ,4 ,5 ])
+
+  const [numbers, setNumbers]=useState([-1, -1, -1, -1, -1 ])
+  const [numberOfThrows, setNumberOfThrows] = useState(0)
+
+  function addDice() {
+    setNumbers(n => {
+      let new_n = [...n]
+      new_n.push(-1)
+      return new_n;
+    })
+  }
+
+  function removeDice(index) {
+    setNumbers(n => {
+      let new_n = [...n]
+      new_n.splice(index, 1);
+      return new_n;
+    })
+  }
 
   function throwOneDice(diceNumber){ 
     setNumbers(n => {
@@ -16,19 +36,24 @@ function App() {
     for (var i = 0; i < numbers.length; i++) {
       throwOneDice(i);
     }
+    setNumberOfThrows((prev) => {return prev+1})
   }
 
   return (
     <div className="App">
       <button onClick={throwAllDices}> Throw Dices </button>
-      <div style={{display: "flex", flexWrap: "wrap"}} className="DiceBoard">
-        {Dice(numbers[0],()=>{throwOneDice(0)})}
-        {Dice(numbers[1],()=>{throwOneDice(1)})}
-        {Dice(numbers[2],()=>{throwOneDice(2)})}
-        {Dice(numbers[3],()=>{throwOneDice(3)})}
-        {Dice(numbers[4],()=>{throwOneDice(4)})}
-      
+      <button onClick={addDice}> Add Dice </button>
+      <button onClick={removeDice}> Remove Dice </button>
+      <h2>Antall kast: {numberOfThrows}</h2>
+
+      <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}} className="DiceBoard">
+      {
+        numbers.map((number, index) => <Dice number={number} setNumber={() => throwOneDice(index)} key={index} index={index}/>)
+      }
       </div>
+      <Board addDice={addDice} removeDice={removeDice}/>
+
+
 
     </div>
   );
