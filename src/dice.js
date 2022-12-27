@@ -12,17 +12,16 @@ const diceStyle = {
     justifyContent: "center"
 }
 
-function Dice({number, setNumber, index}) {
+function Dice({ number, moveDice, index }) {
     return (
-            <div
-                draggable={true}
-                onDragStart={e => {e.dataTransfer.setData("diceIndex", index); e.dataTransfer.setData("diceNumber", number)}}
-                
-                onClick={setNumber}
-                style={diceStyle}
-            >
-                {number}
-            </div>
+        <div
+            draggable={true}
+            onDragStart={e => { e.dataTransfer.setData("diceIndex", index); e.dataTransfer.setData("diceNumber", number) }}
+            onClick={moveDice}
+            style={diceStyle}
+        >
+            {number}
+        </div>
     )
 
 }
